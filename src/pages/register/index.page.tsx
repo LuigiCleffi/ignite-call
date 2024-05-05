@@ -24,7 +24,6 @@ export default function Register() {
     register,
     handleSubmit,
     setValue,
-    resetField,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
@@ -36,8 +35,7 @@ export default function Register() {
     if (router.query?.username) {
       setValue('username', String(router.query.username))
     }
-    return () => resetField('username')
-  }, [router.query.username, setValue, resetField])
+  }, [router.query.username, setValue])
 
   const handleRegister = async (data: RegisterFormData) => {
     try {
